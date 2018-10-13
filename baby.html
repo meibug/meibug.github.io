@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>胎动辅助--简单版</title>
+	<style type="text/css">
+		#movement{
+			width: 250px;
+			height: 150px;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		var oneHoursDetail = [];
+		
+		function movementClick(el) {
+			var log = document.getElementById('movementLog');
+			let nowTime = new Date().getTime();
+			let timeStr = new Date(nowTime).toLocaleString();
+			let curCount = oneHoursDetail.length + 1;
+			let cur = `第${curCount}次 ${timeStr}`;
+			oneHoursDetail.push(cur);
+			let p = document.createElement('p')
+			p.innerText = cur;
+			log.appendChild(p)
+		}
+
+		// 分为1分钟计算一次和5分钟计算一次
+	</script>
+</head>
+<body>
+	<button id="movement" onclick="movementClick(this)">宝宝动了</button>
+	<div id="movementLog">
+		
+	</div>
+</body>
+</html>
