@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5/CSS3图片选择动画 可选择多张图片DEMO演示</title>
+  <link rel="stylesheet" href="./css/style.css" media="screen" type="text/css" />
+</head>
+
+<body>
+  <div class="clearfix">
+    <button class="select">&nbsp;</button>
+    <h1>select your photo</h1>
+    <button class="send " data-counter="0">&#10004;</button>
+  </div>
+  <div style="text-align:center;clear:both">
+  </div>
+  <ul>
+    <li><img src="./img/2.jpg" /></li>
+    <li><img src="./img/1.jpg" /></li>
+    <li><img src="./img/2.jpg" /></li>
+    <li><img src="./img/1.jpg" /></li>
+    <li><img src="./img/1.jpg" /></li>
+    <li><img src="./img/2.jpg" /></li>
+    <li><img src="./img/1.jpg" /></li>
+    <li><img src="./img/2.jpg" /></li>
+  </ul>
+
+  <script src='https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js'></script>
+  <script>
+    $('li').click(function () {
+      $(this).toggleClass('selected');
+      if ($('li.selected').length == 0)
+        $('.select').removeClass('selected');
+      else
+        $('.select').addClass('selected');
+      counter();
+    });
+
+    // all item selection
+    $('.select').click(function () {
+      if ($('li.selected').length == 0) {
+        $('li').addClass('selected');
+        $('.select').addClass('selected');
+      } else {
+        $('li').removeClass('selected');
+        $('.select').removeClass('selected');
+      }
+      counter();
+    });
+
+    // number of selected items
+    function counter() {
+      if ($('li.selected').length > 0)
+        $('.send').addClass('selected');
+      else
+        $('.send').removeClass('selected');
+      $('.send').attr('data-counter', $('li.selected').length);
+    }
+  </script>
+
+</body>
+
+</html>
